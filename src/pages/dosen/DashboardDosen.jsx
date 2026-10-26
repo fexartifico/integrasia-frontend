@@ -13,9 +13,9 @@ export default function DashboardDosen() {
         {/* Card Statistik Dosen - Desain memanjang putih bersih */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
           
-          <div className="bg-white rounded-2xl p-6 flex items-center gap-5 border border-slate-200 shadow-sm">
-            <div className="w-14 h-14 rounded-xl bg-[#1687F5] flex items-center justify-center shrink-0 shadow-md">
-              <i className="fa-solid fa-users text-white text-2xl"></i>
+          <div className="bg-white rounded-2xl p-6 flex items-center gap-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-[60px] h-[60px] rounded-xl bg-[#EFF6FF] flex items-center justify-center shrink-0">
+              <i className="fa-solid fa-users text-[#1687F5] text-[28px]"></i>
             </div>
             <div>
               <div className="text-[22px] font-extrabold text-black leading-none mb-1">18 SKS</div>
@@ -23,9 +23,9 @@ export default function DashboardDosen() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 flex items-center gap-5 border border-slate-200 shadow-sm">
-            <div className="w-14 h-14 rounded-xl bg-emerald-500 flex items-center justify-center shrink-0 shadow-md">
-              <i className="fa-solid fa-money-bill-wave text-white text-2xl"></i>
+          <div className="bg-white rounded-2xl p-6 flex items-center gap-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-[60px] h-[60px] rounded-xl bg-[#ECFDF5] flex items-center justify-center shrink-0">
+              <i className="fa-solid fa-money-bill-wave text-[#10B981] text-[28px]"></i>
             </div>
             <div>
               <div className="text-[22px] font-extrabold text-black leading-none mb-1">6 SKS</div>
@@ -33,9 +33,9 @@ export default function DashboardDosen() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-6 flex items-center gap-5 border border-slate-200 shadow-sm">
-            <div className="w-14 h-14 rounded-xl bg-orange-500 flex items-center justify-center shrink-0 shadow-md">
-              <i className="fa-solid fa-clock-rotate-left text-white text-2xl"></i>
+          <div className="bg-white rounded-2xl p-6 flex items-center gap-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            <div className="w-[60px] h-[60px] rounded-xl bg-[#FFF4E5] flex items-center justify-center shrink-0">
+              <i className="fa-solid fa-clock-rotate-left text-[#F59E0B] text-[28px]"></i>
             </div>
             <div>
               <div className="text-[20px] font-extrabold text-black leading-none mb-1">Menunggu Verifikasi</div>

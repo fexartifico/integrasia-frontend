@@ -25,7 +25,7 @@ export default function Login() {
           <form className="flex flex-col gap-6">
             {/* Input Email */}
             <div>
-              <label className="block text-[15px] font-bold text-slate-800 mb-0">Email</label>
+              <label className="block text-[15px] font-bold text-slate-800 mb-2">Email</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <i className="fa-regular fa-envelope text-slate-400 text-lg"></i>
@@ -40,7 +40,7 @@ export default function Login() {
 
             {/* Input Password */}
             <div>
-              <label className="block text-[15px] font-bold text-slate-800 mb-0">Password</label>
+              <label className="block text-[15px] font-bold text-slate-800 mb-2">Password</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <i className="fa-solid fa-lock text-slate-400 text-lg"></i>
