@@ -1,154 +1,87 @@
-export default function DistribusiSks() {
+const TIERS = [
+  { key: "wajib", title: "Wajib Mengajar", note: "6 SKS", top: "border-t-[#3B5BDB]", head: "bg-[#EDF0FD]", pill: "bg-[#3B5BDB] text-white", cell: "bg-[#F6F8FE]" },
+  { key: "p100", title: "Kelebihan SKS 100%", note: "WM + 6 SKS", top: "border-t-[#12A58A]", head: "bg-[#E4F6F2]", pill: "bg-[#12A58A] text-white", cell: "bg-[#F4FBF9]" },
+  { key: "p50", title: "Kelebihan SKS 50%", note: "100% + 4 SKS", top: "border-t-[#F2A33A]", head: "bg-[#FDF2E0]", pill: "bg-[#F2A33A] text-[#4A2E05]", cell: "bg-[#FFFAF2]" },
+  { key: "none", title: "Kelebihan SKS", note: "tidak dibayarkan", top: "border-t-[#B4BAC6]", head: "bg-[#EEF0F3]", pill: "bg-[#6B7280] text-white", cell: "bg-[#F8F9FA]" },
+];
+
+const JURUSAN_TI = "Teknik Informatika dan Komputer";
+const PASCA = "Pascasarjana";
+
+const ROWS = [
+  { jurusan: JURUSAN_TI, prodi: "Sarjana Terapan - Teknik Informatika", jenis: "Reguler", kelas: "5A", mk: "(TIK502) Perencanaan Sistem", sks: 3, metode: "Non Team Teaching", dosen: 1, sksDosen: 3, wajib: 3 },
+  { jurusan: JURUSAN_TI, prodi: "Sarjana Terapan - Teknik Informatika", jenis: "Reguler", kelas: "5C", mk: "(TIK502) Perencanaan Sistem", sks: 3, metode: "Team Teaching Seri", dosen: 1, sksDosen: 3, wajib: 3 },
+  { jurusan: JURUSAN_TI, prodi: "Sarjana Terapan - Teknik Multimedia dan Jaringan", jenis: "Reguler", kelas: "1B", mk: "(TMJ110) Algoritma dan Pemrograman", sks: 3, metode: "Non Team Teaching", dosen: 1, sksDosen: 3, p100: 3 },
+  { jurusan: JURUSAN_TI, prodi: "Sarjana Terapan - Teknik Informatika", jenis: "Reguler", kelas: "3A", mk: "(TIK304) Kecerdasan Buatan", sks: 2, metode: "Non Team Teaching", dosen: 1, sksDosen: 2, p100: 2 },
+  { jurusan: PASCA, prodi: "Magister Terapan - Teknik Elektro", jenis: "Pascasarjana", kelas: "1A", mk: "(MTE103) Algoritma dan Pemodelan", sks: 2, metode: "Non Team Teaching", dosen: 1, sksDosen: 2, p100: 1, p50: 1 },
+  { jurusan: PASCA, prodi: "Magister Terapan - Teknik Elektro", jenis: "Pascasarjana", kelas: "3A", mk: "(MTE307) Pervasive Computing", sks: 3, metode: "Team Teaching Seri", dosen: 2, sksDosen: 1.5, p50: 1.5 },
+];
+
+const fmt = (n) => String(n).replace(".", ",");
+
+const TH = "px-4 py-3.5 text-[12.5px] font-semibold leading-snug text-slate-600";
+
+export default function DistribusiSksTabel() {
   return (
-    <div className="flex-1 w-full bg-[#f8fafc] font-sans p-8">
-      <div className="w-full">
-        
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-[28px] font-extrabold text-[#0F172A] mb-2">Distribusi SKS</h1>
-          <p className="text-[15px] text-slate-500 font-medium">
-            Rincian pemetaan beban mengajar wajib dan kelebihan SKS per mata kuliah.
-          </p>
-        </div>
-        
-        {/* Container Tabel dengan Overflow Horizontal */}
-        <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden w-full">
-          <div className="overflow-x-auto">
-            {/* Menggunakan min-w-max agar tabel tidak terjepit jika layarnya kecil */}
-            <table className="w-full text-center border-collapse min-w-max">
-              <thead className="bg-[#F8FAFC] border-b border-slate-200">
-                <tr>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200">No</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200">Jurusan</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200">Program Studi</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200">Jenis Kelas</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200">Nama<br/>Kelas</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200 text-left">Mata Kuliah</th>
-                  <th className="px-3 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200">SKS<br/>MK</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200">Metode<br/>Pengajaran</th>
-                  <th className="px-3 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200">Jumlah<br/>Dosen</th>
-                  <th className="px-3 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200">SKS<br/>Dosen</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200 w-[110px]">Wajib<br/>Mengajar<br/>( 6 SKS )</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200 w-[120px]">Kelebihan SKS<br/>Pembayaran<br/>100%<br/>( WM + 6 SKS )</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 border-r border-slate-200 w-[120px]">Kelebihan SKS<br/>Pembayaran<br/>50%<br/>( 100% + 4 SKS )</th>
-                  <th className="px-4 py-4 text-[12px] font-bold text-slate-700 w-[110px]">Kelebihan<br/>SKS<br/>Tidak<br/>dibayarkan</th>
-                </tr>
-              </thead>
-              <tbody className="text-[13px] text-slate-600 font-medium">
-                
-                {/* Baris 1 */}
-                <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                  <td className="px-4 py-4 border-r border-slate-200">1</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Teknik Informatika dan<br/>Komputer</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Sarjana Terapan - Teknik<br/>Informatika</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Reguler</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><a href="#" className="text-[#00B074] font-bold underline hover:text-emerald-700">5A</a></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-left">(TIK502) Perencanaan<br/>Sistem</td>
-                  <td className="px-3 py-4 border-r border-slate-200">3</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Non Team<br/>Teaching</td>
-                  <td className="px-3 py-4 border-r border-slate-200">1</td>
-                  <td className="px-3 py-4 border-r border-slate-200">3</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><span className="inline-block bg-[#4B5563] text-white px-3 py-1 rounded-full font-bold text-[11px]">3 SKS</span></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 text-slate-400">-</td>
-                </tr>
+    <div
+      className="w-full overflow-hidden rounded-xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.06)] ring-1 ring-slate-200/80"
+      style={{ fontFamily: "'Figtree', system-ui, sans-serif" }}
+    >
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap');`}</style>
 
-                {/* Baris 2 */}
-                <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                  <td className="px-4 py-4 border-r border-slate-200">2</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Teknik Informatika dan<br/>Komputer</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Sarjana Terapan - Teknik<br/>Informatika</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Reguler</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><a href="#" className="text-[#00B074] font-bold underline hover:text-emerald-700">5C</a></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-left">(TIK502) Perencanaan<br/>Sistem</td>
-                  <td className="px-3 py-4 border-r border-slate-200">3</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Team Teaching<br/>Seri</td>
-                  <td className="px-3 py-4 border-r border-slate-200">1</td>
-                  <td className="px-3 py-4 border-r border-slate-200">3</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><span className="inline-block bg-[#4B5563] text-white px-3 py-1 rounded-full font-bold text-[11px]">3 SKS</span></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 text-slate-400">-</td>
-                </tr>
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-max border-collapse text-left">
+          <thead>
+            <tr className="border-b border-slate-200 bg-slate-50 align-bottom">
+              <th className={`${TH} text-center`}>No</th>
+              <th className={TH}>Jurusan</th>
+              <th className={TH}>Program Studi</th>
+              <th className={TH}>Jenis Kelas</th>
+              <th className={`${TH} text-center`}>Nama<br />Kelas</th>
+              <th className={TH}>Mata Kuliah</th>
+              <th className={`${TH} text-center`}>SKS<br />MK</th>
+              <th className={TH}>Metode<br />Pengajaran</th>
+              <th className={`${TH} text-center`}>Jumlah<br />Dosen</th>
+              <th className={`${TH} text-center`}>SKS<br />Dosen</th>
+              {TIERS.map((t) => (
+                <th key={t.key} className={`${TH} w-[130px] border-t-4 text-center ${t.top} ${t.head}`}>
+                  {t.title}
+                  <div className="mt-0.5 text-[11.5px] font-medium text-slate-500">({t.note})</div>
+                </th>
+              ))}
+            </tr>
+          </thead>
 
-                {/* Baris 3 */}
-                <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                  <td className="px-4 py-4 border-r border-slate-200">3</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Teknik Informatika dan<br/>Komputer</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Sarjana Terapan - Teknik<br/>Multimedia dan Jaringan</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Reguler</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><a href="#" className="text-[#00B074] font-bold underline hover:text-emerald-700">1B</a></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-left">(TMJ110) Algoritma dan<br/>Pemrograman</td>
-                  <td className="px-3 py-4 border-r border-slate-200">3</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Non Team<br/>Teaching</td>
-                  <td className="px-3 py-4 border-r border-slate-200">1</td>
-                  <td className="px-3 py-4 border-r border-slate-200">3</td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><span className="inline-block bg-[#00B074] text-white px-3 py-1 rounded-full font-bold text-[11px]">3 SKS</span></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 text-slate-400">-</td>
-                </tr>
-
-                {/* Baris 4 */}
-                <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                  <td className="px-4 py-4 border-r border-slate-200">4</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Teknik Informatika dan<br/>Komputer</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Sarjana Terapan - Teknik<br/>Informatika</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Reguler</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><a href="#" className="text-[#00B074] font-bold underline hover:text-emerald-700">3A</a></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-left">(TIK304) Kecerdasan<br/>Buatan</td>
-                  <td className="px-3 py-4 border-r border-slate-200">2</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Non Team<br/>Teaching</td>
-                  <td className="px-3 py-4 border-r border-slate-200">1</td>
-                  <td className="px-3 py-4 border-r border-slate-200">2</td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><span className="inline-block bg-[#00B074] text-white px-3 py-1 rounded-full font-bold text-[11px]">2 SKS</span></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 text-slate-400">-</td>
-                </tr>
-
-                {/* Baris 5 */}
-                <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                  <td className="px-4 py-4 border-r border-slate-200">5</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Pascasarjana</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Magister Terapan - Teknik<br/>Elektro</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Pascasarjana</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><a href="#" className="text-[#00B074] font-bold underline hover:text-emerald-700">1A</a></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-left">(MTE103) Algoritma dan<br/>Pemodelan</td>
-                  <td className="px-3 py-4 border-r border-slate-200">2</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Non Team<br/>Teaching</td>
-                  <td className="px-3 py-4 border-r border-slate-200">1</td>
-                  <td className="px-3 py-4 border-r border-slate-200">2</td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><span className="inline-block bg-[#00B074] text-white px-3 py-1 rounded-full font-bold text-[11px]">1 SKS</span></td>
-                  <td className="px-4 py-4 border-r border-slate-200"><span className="inline-block bg-[#00B074] text-white px-3 py-1 rounded-full font-bold text-[11px]">1 SKS</span></td>
-                  <td className="px-4 py-4 text-slate-400">-</td>
-                </tr>
-
-                {/* Baris 6 */}
-                <tr className="border-slate-200 hover:bg-slate-50 transition-colors">
-                  <td className="px-4 py-4 border-r border-slate-200">6</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Pascasarjana</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Magister Terapan - Teknik<br/>Elektro</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Pascasarjana</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><a href="#" className="text-[#00B074] font-bold underline hover:text-emerald-700">3A</a></td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-left">(MTE307) Pervasive<br/>Computing</td>
-                  <td className="px-3 py-4 border-r border-slate-200">3</td>
-                  <td className="px-4 py-4 border-r border-slate-200">Team Teaching<br/>Seri</td>
-                  <td className="px-3 py-4 border-r border-slate-200">2</td>
-                  <td className="px-3 py-4 border-r border-slate-200">1.5</td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 border-r border-slate-200 text-slate-400">-</td>
-                  <td className="px-4 py-4 border-r border-slate-200"><span className="inline-block bg-[#00B074] text-white px-3 py-1 rounded-full font-bold text-[11px]">1.5 SKS</span></td>
-                  <td className="px-4 py-4 text-slate-400">-</td>
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
-        </div>
-
+          <tbody className="text-[13.5px] text-slate-600">
+            {ROWS.map((r, i) => (
+              <tr key={i} className="border-b border-slate-100 transition-colors last:border-b-0 hover:bg-[#F7F8FC]">
+                <td className="px-4 py-4 text-center tabular-nums text-slate-400">{i + 1}</td>
+                <td className="px-4 py-4 leading-snug">{r.jurusan}</td>
+                <td className="px-4 py-4 leading-snug">{r.prodi}</td>
+                <td className="px-4 py-4">{r.jenis}</td>
+                <td className="px-4 py-4 text-center">
+                  <a href="#" className="inline-flex h-8 min-w-[2.25rem] items-center justify-center rounded-lg bg-slate-900 px-2 text-[13px] font-bold text-white transition-colors hover:bg-[#3B5BDB]">
+                    {r.kelas}
+                  </a>
+                </td>
+                <td className="px-4 py-4 font-semibold leading-snug text-slate-900">{r.mk}</td>
+                <td className="px-4 py-4 text-center tabular-nums">{r.sks}</td>
+                <td className="px-4 py-4">{r.metode}</td>
+                <td className="px-4 py-4 text-center tabular-nums">{r.dosen}</td>
+                <td className="px-4 py-4 text-center font-semibold tabular-nums text-slate-800">{fmt(r.sksDosen)}</td>
+                {TIERS.map((t) => (
+                  <td key={t.key} className={`px-4 py-4 text-center ${t.cell}`}>
+                    {r[t.key] ? (
+                      <span className={`inline-block rounded-md px-2.5 py-1 text-[12px] font-bold tabular-nums ${t.pill}`}>{fmt(r[t.key])} SKS</span>
+                    ) : (
+                      <span className="text-slate-300">&ndash;</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
