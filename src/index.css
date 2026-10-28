@@ -37,3 +37,18 @@ body {
   /* 100 dibagi 0.9 = 111.11. Ini penting untuk menutupi ruang kosong akibat efek zoom */
   min-height: 111.11vh;
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}

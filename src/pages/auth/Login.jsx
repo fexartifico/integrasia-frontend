@@ -25,14 +25,14 @@ export default function Login() {
           <form className="flex flex-col gap-6">
             {/* Input Email */}
             <div>
-              <label className="block text-[15px] font-bold text-slate-800 mb-2">Email</label>
+              <label className="block text-[15px] font-bold text-slate-800 mb-2">NIP</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <i className="fa-regular fa-envelope text-slate-400 text-lg"></i>
                 </div>
                 <input 
-                  type="email" 
-                  placeholder="pnj@kampus.ac.id" 
+                  type="NIP" 
+                  placeholder="Masukan NIP" 
                   className="w-full pl-12 pr-4 py-4 border-2 border-slate-200 rounded-xl text-[15px] font-medium text-slate-900 focus:ring-0 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
                 />
               </div>

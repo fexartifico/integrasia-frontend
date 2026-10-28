@@ -166,17 +166,12 @@ export default function Sidebar() {
             </li>
             {/* Dua Menu Tambahan Admin Input */}
             <li>
-              <NavLink to="/admin-input/master-tarif" className={getNavLinkClass}>
-                <i className="fa-solid fa-money-check-dollar text-[26px] mr-4 text-center w-8 transition-transform duration-300 group-hover:scale-110"></i>
-                Master Tarif
+              <NavLink to="/admin-input/master-data" className={getNavLinkClass}>
+                <i className="fa-solid fa-database text-[26px] mr-4 text-center w-8 transition-transform duration-300 group-hover:scale-110"></i>
+                Master Data
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/admin-input/dokumen-perdir" className={getNavLinkClass}>
-                <i className="fa-solid fa-file-contract text-[26px] mr-4 text-center w-8 transition-transform duration-300 group-hover:scale-110"></i>
-                Dokumen Perdir
-              </NavLink>
-            </li>
+            
           </>
         )}
 

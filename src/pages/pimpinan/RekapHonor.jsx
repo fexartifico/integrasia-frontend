@@ -17,12 +17,6 @@ export default function RekapHonor() {
             <h1 className="text-[28px] font-extrabold text-black mb-2">Rekapitulasi Honorarium</h1>
             <p className="text-[16px] text-slate-600 font-medium">Laporan agregat honorarium berdasarkan Program Studi/Jurusan</p>
           </div>
-          
-          {/* Tombol Export */}
-          <button className="flex items-center gap-2 bg-[#10b981] hover:bg-[#059669] text-white px-5 py-2.5 rounded-lg font-bold text-[14px] transition-colors shadow-sm">
-            <i className="fa-solid fa-file-excel text-[16px]"></i>
-            Export Laporan (excel)
-          </button>
         </div>
 
         {/* 

@@ -5,12 +5,11 @@ import Login from './pages/auth/Login';
 import SelectRole from './pages/auth/SelectRole';
 
 // Import Dashboard Pimpinan
-import DashboardPimpinan from './pages/pimpinan/DashboardPimpinan';
+import DashboardPengawasan from './pages/pimpinan/DashboardPengawasan';
 import DataHonor from './pages/pimpinan/DataHonor';
 import RekapHonor from './pages/pimpinan/RekapHonor';
 
 // Import Dashboard & Verifikasi Keuangan
-import DashboardKeuangan from './pages/keuangan/DashboardKeuangan';
 import DataVerifikasi from './pages/keuangan/DataVerifikasi';
 import RekapHonorKeuangan from './pages/keuangan/RekapHonorKeuangan';
 
@@ -20,8 +19,8 @@ import ManajemenRole from './pages/superadmin/ManajemenRole';
 
 //import Role Admin Input
 import DashboardAdminInput from './pages/admin_input/DashboardAdminInput';
-import MasterTarif from './pages/admin_input/MasterTarif';
-import DokumenPerdir from './pages/admin_input/DokumenPerdir';
+import MasterData from './pages/admin_input/MasterData';
+
 
 // Import Role Dosen
 import DashboardDosen from './pages/dosen/DashboardDosen';
@@ -42,12 +41,12 @@ function App() {
           <Route index element={<Navigate to="/landing" replace />} />
           
           {/* 1. Role Pimpinan */}
-          <Route path="dashboard" element={<DashboardPimpinan />} />
+          <Route path="dashboard" element={<DashboardPengawasan />} />
           <Route path="data-honor" element={<DataHonor />} />
           <Route path="rekap-honor" element={<RekapHonor />} />
           
           {/* 2. Role Keuangan */}
-          <Route path="keuangan/dashboard" element={<DashboardKeuangan />} />
+          <Route path="keuangan/dashboard" element={<DashboardPengawasan />} />
           <Route path="keuangan/verifikasi" element={<DataVerifikasi />} />
           <Route path="keuangan/rekap-honor" element={<RekapHonorKeuangan />} />
 
@@ -62,8 +61,8 @@ function App() {
           <Route path="admin-input/rekap-honor" element={<RekapHonor />} />
           
           {/* Menu Khusus Admin Input */}
-          <Route path="admin-input/master-tarif" element={<MasterTarif />} />
-          <Route path="admin-input/dokumen-perdir" element={<DokumenPerdir />} />
+          <Route path="admin-input/master-data" element={<MasterData />} />
+         
 
           {/* 5. Role Dosen */}
           <Route path="dosen/dashboard" element={<DashboardDosen />} />
