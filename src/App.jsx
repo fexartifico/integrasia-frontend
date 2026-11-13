@@ -3,15 +3,18 @@ import MainLayout from './layouts/MainLayout';
 import LandingPage from './pages/auth/LandingPage';
 import Login from './pages/auth/Login';
 import SelectRole from './pages/auth/SelectRole';
+import ProfilSaya from './components/ProfilSaya';
 
 // Import Dashboard Pimpinan
 import DashboardPengawasan from './pages/pimpinan/DashboardPengawasan';
 import DataHonor from './pages/pimpinan/DataHonor';
 import RekapHonor from './pages/pimpinan/RekapHonor';
+import DataHonorPendidikan from './pages/pimpinan/DataHonorPendidikan';
 
 // Import Dashboard & Verifikasi Keuangan
 import DataVerifikasi from './pages/keuangan/DataVerifikasi';
 import RekapHonorKeuangan from './pages/keuangan/RekapHonorKeuangan';
+import DataVerifikasiHonorPendidikan from './pages/keuangan/DataVerifikasiHonorPendidikan';
 
 // Import Role superadmin
 import DashboardSuperAdmin from './pages/superadmin/DashboardSuperAdmin';
@@ -26,6 +29,8 @@ import MasterData from './pages/admin_input/MasterData';
 import DashboardDosen from './pages/dosen/DashboardDosen';
 import HonorariumDosen from './pages/dosen/HonorariumDosen';
 import DistribusiSks from './pages/dosen/DistribusiSks';
+// import honorPendidikan from './pages/dosen/HonorPendidikan';
+
 
 function App() {
   return (
@@ -35,6 +40,7 @@ function App() {
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/select-role" element={<SelectRole />} />
+        <Route path="/profil" element={<ProfilSaya />} />
 
         {/* Rute Dengan Layout Utama (Mendapatkan Sidebar & Topbar) */}
         <Route path="/" element={<MainLayout />}>
@@ -44,11 +50,13 @@ function App() {
           <Route path="dashboard" element={<DashboardPengawasan />} />
           <Route path="data-honor" element={<DataHonor />} />
           <Route path="rekap-honor" element={<RekapHonor />} />
+          <Route path="honor-pendidikan" element={<DataHonorPendidikan />} />
           
           {/* 2. Role Keuangan */}
           <Route path="keuangan/dashboard" element={<DashboardPengawasan />} />
           <Route path="keuangan/verifikasi" element={<DataVerifikasi />} />
           <Route path="keuangan/rekap-honor" element={<RekapHonorKeuangan />} />
+          <Route path="keuangan/honor-pendidikan" element={<DataVerifikasiHonorPendidikan />} />
 
           {/* 3. Role Super Admin */}
           <Route path="superadmin/dashboard" element={<DashboardSuperAdmin />} />
@@ -68,6 +76,8 @@ function App() {
           <Route path="dosen/dashboard" element={<DashboardDosen />} />
           <Route path="dosen/distribusi-sks" element={<DistribusiSks />} />
           <Route path="dosen/honorarium" element={<HonorariumDosen />} />
+          <Route path="dosen/honor-pendidikan" element={<honorPendidikan />} />
+         
           
         </Route>
         

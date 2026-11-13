@@ -61,6 +61,14 @@ export default function Sidebar() {
                 Data Honor
               </NavLink>
             </li>
+            
+            <li>
+          {/* Menu Baru: Honor Pendidikan (Non-Pengajaran) */}
+          <NavLink to="/honor-pendidikan" className={getNavLinkClass}>
+            <i className="fa-solid fa-chalkboard-user text-[20px] mr-4 w-8 text-center transition-transform duration-300 group-hover:scale-110"></i>
+            Honor Non-Pengajaran
+          </NavLink>
+        </li>
             <li>
               <NavLink to="/rekap-honor" className={getNavLinkClass}>
                 <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 mr-4 transition-transform duration-300 group-hover:scale-110">
@@ -96,6 +104,13 @@ export default function Sidebar() {
                 Verifikasi Honor
               </NavLink>
             </li>
+             <li>
+          {/* Menu Baru: Honor Pendidikan (Non-Pengajaran) */}
+          <NavLink to="/keuangan/honor-pendidikan" className={getNavLinkClass}>
+            <i className="fa-solid fa-chalkboard-user text-[20px] mr-4 w-8 text-center transition-transform duration-300 group-hover:scale-110"></i>
+            Honor Non-Pengajaran
+          </NavLink>
+        </li>
             <li>
                 <NavLink to="/keuangan/rekap-honor" className={getNavLinkClass}>
                   <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 mr-4 transition-transform duration-300 group-hover:scale-110">
@@ -208,6 +223,13 @@ export default function Sidebar() {
                 Honorarium
               </NavLink>
             </li>
+            <li>
+          {/* Menu Baru: Honor Pendidikan (Non-Pengajaran) */}
+          <NavLink to="/dosen/honor-pendidikan" className={getNavLinkClass}>
+            <i className="fa-solid fa-chalkboard-user text-[20px] mr-4 w-8 text-center transition-transform duration-300 group-hover:scale-110"></i>
+            Honor Pendidikan
+          </NavLink>
+        </li>
           </>
         )}
 
