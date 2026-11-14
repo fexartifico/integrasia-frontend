@@ -2,207 +2,47 @@ import { useState } from 'react';
 
 export default function DataVerifikasi() {
   const [viewDetail, setViewDetail] = useState(false);
-  const [selectedSemester, setSelectedSemester] = useState("Ganjil 2026/2027");
+  const [selectedSemester, setSelectedSemester] = useState("Ganjil 2025/2026");
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Data Dosen Antrean Verifikasi (DEWI YANTI LILIANA di posisi teratas)
+  // 2 Data Dummy Dosen
   const [dosenList, setDosenList] = useState([
     {
       id: 1,
       nama: "DEWI YANTI LILIANA",
+      statusDosen: "DT",
       nip: "198111162005012004",
       prodi: "Teknik Informatika",
       jabatan: "Lektor Kepala (IV/a)",
       golongan: "Gol IV",
-      kelebihanSks: "17 SKS",
+      kelebihanSks: "9 SKS",
       targetSks: "10 SKS",
-      status: "Menunggu Verifikasi",
-      sksBreakdown: {
-        kuota100: "6 SKS",
-        kuota50: "4 SKS",
-        kuota0: "7 SKS"
-      },
+      status: "Terverifikasi",
       mataKuliahList: [
-        {
-          mataKuliah: "Machine Learning",
-          kelas: "6ACCIT",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "100%",
-          sksLebih: "2 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 250000,
-          tarifEfektif: 250000,
-          subtotal: 8000000
-        },
-        {
-          mataKuliah: "Natural Language Processing",
-          kelas: "6AMSU",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "100%",
-          sksLebih: "2 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 300000,
-          tarifEfektif: 300000,
-          subtotal: 9600000
-        },
-        {
-          mataKuliah: "Natural Language Processing",
-          kelas: "6B",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "100%",
-          sksLebih: "2 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 160000,
-          tarifEfektif: 160000,
-          subtotal: 5120000
-        },
-        {
-          mataKuliah: "Machine Learning",
-          kelas: "6A",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "50%",
-          sksLebih: "2 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 160000,
-          tarifEfektif: 80000,
-          subtotal: 2560000
-        },
-        {
-          mataKuliah: "Pengolahan Citra Digital",
-          kelas: "4A",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "50%",
-          sksLebih: "2 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 160000,
-          tarifEfektif: 80000,
-          subtotal: 2560000
-        },
-        {
-          mataKuliah: "Artificial Intelligence (AI)",
-          kelas: "2A",
-          metodePengajaran: "Team Teaching",
-          jumlahDosen: 2,
-          kategoriSks: "0%",
-          sksLebih: "2 SKS",
-          waktu: "8 Minggu",
-          tarifBase: 160000,
-          tarifEfektif: 0,
-          subtotal: 0
-        },
-        {
-          mataKuliah: "Kecerdasan Buatan untuk Game",
-          kelas: "6A",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "0%",
-          sksLebih: "3 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 160000,
-          tarifEfektif: 0,
-          subtotal: 0
-        },
-        {
-          mataKuliah: "Kecerdasan Buatan & Machine Learning",
-          kelas: "4A",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "0%",
-          sksLebih: "2 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 160000,
-          tarifEfektif: 0,
-          subtotal: 0
-        }
+        { mataKuliah: "Machine Learning", kelas: "6ACCIT", metodePengajaran: "Non Team Teaching", jumlahDosen: 1, sksTotal: 2, minggu: 16, tarifBase: 250000 },
+        { mataKuliah: "Natural Language Processing", kelas: "6AMSU", metodePengajaran: "Non Team Teaching", jumlahDosen: 1, sksTotal: 2, minggu: 16, tarifBase: 300000 },
+        { mataKuliah: "Artificial Intelligence (AI)", kelas: "2A", metodePengajaran: "Team Teaching", jumlahDosen: 2, sksTotal: 2, minggu: 8, tarifBase: 220000 },
+        { mataKuliah: "Kecerdasan Buatan untuk Game", kelas: "6A", metodePengajaran: "Non Team Teaching", jumlahDosen: 1, sksTotal: 3, minggu: 16, tarifBase: 160000 }
       ]
     },
     {
       id: 2,
-      nama: "Dr. Budi Santoso, M.T.",
+      nama: "Dr. BUDI SANTOSO, M.T.",
+      statusDosen: "DT",
       nip: "198001012005011001",
       prodi: "Teknik Informatika",
-      jabatan: "Lektor Kepala (IV/a)",
-      golongan: "Gol IV",
-      kelebihanSks: "8 SKS",
-      targetSks: "10 SKS",
-      status: "Terverifikasi",
-      sksBreakdown: {
-        kuota100: "6 SKS",
-        kuota50: "2 SKS",
-        kuota0: "0 SKS"
-      },
-      mataKuliahList: [
-        {
-          mataKuliah: "Pemrograman Web Lanjut",
-          kelas: "5A",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "100%",
-          sksLebih: "4 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 150000,
-          tarifEfektif: 150000,
-          subtotal: 9600000
-        },
-        {
-          mataKuliah: "Mobile Programming",
-          kelas: "6AMSU",
-          metodePengajaran: "Team Teaching Seri",
-          jumlahDosen: 2,
-          kategoriSks: "100%",
-          sksLebih: "2 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 150000,
-          tarifEfektif: 150000,
-          subtotal: 4800000
-        },
-        {
-          mataKuliah: "Basis Data Lanjut",
-          kelas: "5ACCIT",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "50%",
-          sksLebih: "2 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 150000,
-          tarifEfektif: 75000,
-          subtotal: 2400000
-        }
-      ]
-    },
-    {
-      id: 3,
-      nama: "Siti Aminah, S.E., M.Ak.",
-      nip: "198505152010122003",
-      prodi: "Akuntansi",
       jabatan: "Lektor (III/c)",
       golongan: "Gol III",
-      kelebihanSks: "4 SKS",
+      kelebihanSks: "11 SKS",
       targetSks: "12 SKS",
       status: "Menunggu Verifikasi",
-      sksBreakdown: {
-        kuota100: "4 SKS",
-        kuota50: "0 SKS",
-        kuota0: "0 SKS"
-      },
       mataKuliahList: [
-        {
-          mataKuliah: "Akuntansi Keuangan Lanjut",
-          kelas: "4A",
-          metodePengajaran: "Non Team Teaching",
-          jumlahDosen: 1,
-          kategoriSks: "100%",
-          sksLebih: "4 SKS",
-          waktu: "16 Minggu",
-          tarifBase: 150000,
-          tarifEfektif: 150000,
-          subtotal: 9600000
-        }
+        { mataKuliah: "Pemrograman Web Lanjut", kelas: "5A", metodePengajaran: "Non Team Teaching", jumlahDosen: 1, sksTotal: 3, minggu: 16, tarifBase: 150000 },
+        { mataKuliah: "Basis Data", kelas: "3B", metodePengajaran: "Non Team Teaching", jumlahDosen: 1, sksTotal: 2, minggu: 16, tarifBase: 150000 },
+        // SISTEM OPERASI: Total 3 SKS. Sisa kuota 100% tinggal 1. Maka: 1 SKS (100%) & 2 SKS (50%)
+        { mataKuliah: "Sistem Operasi", kelas: "3AMSU", metodePengajaran: "Non Team Teaching", jumlahDosen: 1, sksTotal: 3, minggu: 16, tarifBase: 200000 },
+        // KEAMANAN JARINGAN: Total 3 SKS. Sisa kuota 50% tinggal 2. Maka: 2 SKS (50%) & 1 SKS (0%)
+        { mataKuliah: "Keamanan Jaringan", kelas: "5ACCIT", metodePengajaran: "Non Team Teaching", jumlahDosen: 1, sksTotal: 3, minggu: 16, tarifBase: 180000 }
       ]
     }
   ]);
@@ -211,20 +51,98 @@ export default function DataVerifikasi() {
 
   // Handler Verifikasi
   const handleVerifikasi = (id) => {
-    const updated = dosenList.map(item => 
+    setDosenList(prev => prev.map(item =>
       item.id === id ? { ...item, status: "Terverifikasi" } : item
-    );
-    setDosenList(updated);
+    ));
     setSelectedDosen(prev => ({ ...prev, status: "Terverifikasi" }));
     alert(`Data honorarium ${selectedDosen.nama} berhasil disetujui & diverifikasi!`);
   };
 
-  const handleTolak = (id) => {
+  const handleTolak = () => {
     alert(`Data honorarium ${selectedDosen.nama} dikembalikan untuk direvisi.`);
   };
 
-  // Kalkulasi Otomatis Honor Bruto & Netto per Dosen Terpilih
-  const honorBrutoVal = selectedDosen.mataKuliahList.reduce((acc, item) => acc + item.subtotal, 0);
+  // FUNGSI INTI: Otomatis Menghitung & Split Kuota SKS (Maks 6 SKS 100%, Maks 4 SKS 50%)
+  const generateSplitRows = (mkList) => {
+    let sisaKuota100 = 6;
+    let sisaKuota50 = 4;
+    const rows = [];
+
+    mkList.forEach((mk) => {
+      let sisaSksMatkul = mk.sksTotal;
+      const bagianMatkul = [];
+
+      // 1. Alokasi ke Kuota 100%
+      if (sisaSksMatkul > 0 && sisaKuota100 > 0) {
+        const ambil100 = Math.min(sisaSksMatkul, sisaKuota100);
+        const subtotal100 = (ambil100 / mk.jumlahDosen) * mk.minggu * mk.tarifBase;
+        bagianMatkul.push({
+          ...mk,
+          kategoriSks: "100%",
+          sksLebihNum: ambil100,
+          sksLebih: `${ambil100} SKS`,
+          waktu: `${mk.minggu} Minggu`,
+          tarifEfektif: mk.tarifBase,
+          subtotal: subtotal100
+        });
+        sisaKuota100 -= ambil100;
+        sisaSksMatkul -= ambil100;
+      }
+
+      // 2. Alokasi ke Kuota 50%
+      if (sisaSksMatkul > 0 && sisaKuota50 > 0) {
+        const ambil50 = Math.min(sisaSksMatkul, sisaKuota50);
+        const tarif50 = mk.tarifBase * 0.5;
+        const subtotal50 = (ambil50 / mk.jumlahDosen) * mk.minggu * tarif50;
+        bagianMatkul.push({
+          ...mk,
+          kategoriSks: "50%",
+          sksLebihNum: ambil50,
+          sksLebih: `${ambil50} SKS`,
+          waktu: `${mk.minggu} Minggu`,
+          tarifEfektif: tarif50,
+          subtotal: subtotal50
+        });
+        sisaKuota50 -= ambil50;
+        sisaSksMatkul -= ambil50;
+      }
+
+      // 3. Alokasi ke Kuota 0% (Diatas 10 SKS)
+      if (sisaSksMatkul > 0) {
+        bagianMatkul.push({
+          ...mk,
+          kategoriSks: "0%",
+          sksLebihNum: sisaSksMatkul,
+          sksLebih: `${sisaSksMatkul} SKS`,
+          waktu: `${mk.minggu} Minggu`,
+          tarifEfektif: 0,
+          subtotal: 0
+        });
+      }
+
+      // Tandai baris UI jika mata kuliah terpecah lebih dari 1 bagian
+      const isSplit = bagianMatkul.length > 1;
+      bagianMatkul.forEach((part, index) => {
+        rows.push({
+          ...part,
+          isSplitParent: isSplit && index === 0,
+          isSplitChild: isSplit && index > 0,
+          splitInfo: isSplit ? `${part.sksLebihNum}/${mk.sksTotal} SKS` : null
+        });
+      });
+    });
+
+    return rows;
+  };
+
+  // Kalkulasi & Render Rows Berdasarkan Dosen Terpilih
+  const processedRows = generateSplitRows(selectedDosen.mataKuliahList);
+  const totalSksLebih = processedRows.reduce((acc, item) => acc + item.sksLebihNum, 0);
+  const sksPerKuota = (kategori) =>
+    processedRows.filter(r => r.kategoriSks === kategori).reduce((acc, r) => acc + r.sksLebihNum, 0);
+  const honorBrutoVal = processedRows.reduce((acc, item) => acc + item.subtotal, 0);
+
+  // Kalkulasi Pajak & Netto
   const pphPercent = selectedDosen.golongan === 'Gol IV' ? 0.15 : 0.05;
   const pajakPphVal = Math.round(honorBrutoVal * pphPercent);
   const honorNettoVal = honorBrutoVal - pajakPphVal;
@@ -246,7 +164,7 @@ export default function DataVerifikasi() {
             className="flex items-center gap-3 px-5 py-2.5 border border-slate-300 rounded-lg bg-white text-slate-700 font-bold hover:bg-slate-50 transition-colors mb-8 shadow-sm text-[15px] cursor-pointer"
           >
             <i className="fa-solid fa-arrow-left text-[#1687F5]"></i>
-            Kembali ke Data Honor
+            Kembali ke Verifikasi Honor
           </button>
 
           {/* Header Detail */}
@@ -257,17 +175,17 @@ export default function DataVerifikasi() {
                 Pemeriksaan detail komponen SKS untuk <span className="font-bold text-black">{selectedDosen.nama}</span> pada periode {selectedSemester}
               </p>
             </div>
-            
-            {/* Status Verifikasi */}
+
+            {/* Indicator Status */}
             {selectedDosen.status === "Terverifikasi" ? (
               <div className="flex items-center gap-2 text-green-700 bg-green-50 px-4 py-2 rounded-lg border border-green-300">
                 <i className="fa-solid fa-check-circle text-[16px]"></i>
-                <span className="font-bold text-[15px]">Terverifikasi</span>
+                <span className="font-bold text-[15px]">Terverifikasi Keuangan</span>
               </div>
             ) : (
-              <div className="flex items-center gap-2 text-orange-600 bg-orange-50 px-4 py-2 rounded-lg border border-orange-300">
+              <div className="flex items-center gap-2 text-amber-600 bg-orange-50 px-4 py-2 rounded-lg border border-orange-200">
                 <i className="fa-solid fa-clock-rotate-left text-[16px]"></i>
-                <span className="font-bold text-[15px]">Menunggu Verifikasi Keuangan</span>
+                <span className="font-semibold text-[15px]">Menunggu Verifikasi Keuangan</span>
               </div>
             )}
           </div>
@@ -277,6 +195,13 @@ export default function DataVerifikasi() {
             <div className="flex flex-col">
               <span className="text-[13px] text-slate-500 font-bold mb-1 uppercase tracking-wider">Nama Dosen</span>
               <span className="text-[16px] font-bold text-black">{selectedDosen.nama}</span>
+            </div>
+
+            <div className="hidden lg:block w-[1px] h-10 bg-slate-200"></div>
+
+            <div className="flex flex-col">
+              <span className="text-[13px] text-slate-500 font-bold mb-1 uppercase tracking-wider">Status Dosen</span>
+              <span className="text-[16px] font-bold text-[#1687F5]">{selectedDosen.statusDosen}</span>
             </div>
 
             <div className="hidden lg:block w-[1px] h-10 bg-slate-200"></div>
@@ -296,22 +221,15 @@ export default function DataVerifikasi() {
             <div className="hidden lg:block w-[1px] h-10 bg-slate-200"></div>
 
             <div className="flex flex-col">
-              <span className="text-[13px] text-slate-500 font-bold mb-1 uppercase tracking-wider">Program Studi</span>
-              <span className="text-[16px] font-bold text-black">{selectedDosen.prodi}</span>
-            </div>
-
-            <div className="hidden lg:block w-[1px] h-10 bg-slate-200"></div>
-
-            <div className="flex flex-col">
-              <span className="text-[13px] text-slate-500 font-bold mb-1 uppercase tracking-wider">Target Beban Wajib</span>
+              <span className="text-[13px] text-slate-500 font-bold mb-1 uppercase tracking-wider">Target Wajib</span>
               <span className="text-[16px] font-bold text-[#1687F5]">{selectedDosen.targetSks}</span>
             </div>
           </div>
 
-          {/* Layout Flex Col (Tabel & Summary) */}
+          {/* Layout Tabel & Summary */}
           <div className="flex flex-col gap-8 w-full">
             
-            {/* Tabel Rincian SKS Lebih */}
+            {/* Tabel Utama Rincian Mata Kuliah */}
             <div className="w-full bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm overflow-x-auto">
               <table className="w-full text-left border-collapse min-w-max">
                 <thead className="bg-slate-50 border-b border-slate-200">
@@ -328,18 +246,46 @@ export default function DataVerifikasi() {
                   </tr>
                 </thead>
                 <tbody className="text-[14px] md:text-[15px] text-slate-700 font-medium">
-                  {selectedDosen.mataKuliahList.map((item, idx) => (
+                  {processedRows.map((item, idx) => (
                     <tr 
                       key={idx} 
-                      className={`border-b border-slate-100 hover:bg-slate-50 ${
+                      className={`hover:bg-slate-50 transition-colors ${
+                        item.isSplitParent 
+                          ? 'border-b border-dashed border-orange-200' 
+                          : 'border-b border-slate-100'
+                      } ${
                         item.kategoriSks === '50%' 
-                          ? 'bg-orange-50/20' 
+                          ? 'bg-orange-50/25' 
                           : item.kategoriSks === '0%' 
                           ? 'bg-slate-50/40 text-slate-400' 
                           : ''
                       }`}
                     >
-                      <td className="px-6 py-5 font-bold text-slate-900">{item.mataKuliah}</td>
+                      {/* KOLOM MATA KULIAH (Dengan Indikator Split/Pecahan) */}
+                      <td className="px-6 py-5">
+                        {item.isSplitChild ? (
+                          <div className="flex items-center gap-2.5 pl-4">
+                            <span className="text-orange-400 font-bold text-[16px] leading-none">↳</span>
+                            <div>
+                              <div className="font-bold text-slate-700">{item.mataKuliah}</div>
+                              <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded bg-orange-100/80 text-orange-700 text-[11px] font-bold">
+                                Sisa Split ({item.splitInfo})
+                              </span>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="font-bold text-slate-900">{item.mataKuliah}</div>
+                            {item.isSplitParent && (
+                              <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded bg-blue-50 border border-blue-200 text-[#1687F5] text-[11px] font-bold">
+                                <i className="fa-solid fa-code-branch text-[10px]"></i>
+                                Split Kuota ({item.splitInfo})
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </td>
+                      
                       <td className="px-6 py-5 text-center">
                         <span className={`inline-block px-3 py-1 border rounded-md font-bold text-[12px] ${
                           item.kelas.includes('MSU') 
@@ -364,7 +310,13 @@ export default function DataVerifikasi() {
                           Kelebihan SKS ({item.kategoriSks})
                         </span>
                       </td>
-                      <td className={`px-6 py-5 text-center font-bold ${item.kategoriSks === '0%' ? 'text-slate-400' : 'text-[#1687F5]'}`}>
+                      <td className={`px-6 py-5 text-center font-bold ${
+                        item.kategoriSks === '0%' 
+                          ? 'text-slate-400' 
+                          : item.kategoriSks === '50%' 
+                          ? 'text-orange-600' 
+                          : 'text-[#1687F5]'
+                      }`}>
                         {item.sksLebih}
                       </td>
                       <td className="px-6 py-5 text-center text-slate-500">{item.waktu}</td>
@@ -396,69 +348,85 @@ export default function DataVerifikasi() {
                       </td>
                     </tr>
                   ))}
+                  
+                  {/* BARIS TOTAL TABEL */}
+                  <tr className="bg-slate-100/50 border-t-2 border-slate-300">
+                    <td colSpan="5" className="px-6 py-5 text-right font-extrabold text-slate-800 text-[15px]">
+                      TOTAL KESELURUHAN
+                    </td>
+                    <td className="px-6 py-5 text-center font-extrabold text-[#1687F5] text-[15px]">
+                      {totalSksLebih} SKS
+                    </td>
+                    <td colSpan="2"></td>
+                    <td className="px-6 py-5 text-right font-extrabold text-black text-[15px]">
+                      Rp {honorBrutoVal.toLocaleString('id-ID')}
+                    </td>
+                  </tr>
+
                 </tbody>
               </table>
             </div>
 
-            {/* Kotak Ringkasan & Tombol Aksi */}
-            <div className="w-full md:w-[520px] self-end flex flex-col gap-6">
+            {/* Kotak Ringkasan Pembayaran */}
+            <div className="w-full md:w-[480px] self-end bg-white border-2 border-slate-100 rounded-2xl p-8 shadow-sm">
+              <h3 className="text-[18px] font-extrabold text-black mb-6 border-b border-slate-100 pb-4">Ringkasan Pembayaran</h3>
               
-              <div className="bg-white border-2 border-slate-100 rounded-2xl p-8 shadow-sm">
-                <h3 className="text-[18px] font-extrabold text-black mb-6 border-b border-slate-100 pb-4">Ringkasan Pembayaran</h3>
-                
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-[15px] text-slate-600 font-medium">Beban Mengajar Wajib</span>
-                  <span className="text-[15px] text-slate-400 font-bold">{selectedDosen.targetSks} (Tidak dihitung)</span>
-                </div>
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-[15px] text-slate-600 font-medium">Total Kelebihan SKS Diakui</span>
-                  <span className="text-[15px] text-[#1687F5] font-bold">{selectedDosen.kelebihanSks}</span>
-                </div>
-                
-                <div className="ml-4 mb-6 border-l-2 border-slate-200 pl-3">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-[13px] text-slate-500">Kuota 100%</span>
-                    <span className="text-[13px] text-green-600 font-bold">{selectedDosen.sksBreakdown.kuota100}</span>
-                  </div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-[13px] text-slate-500">Kuota 50%</span>
-                    <span className="text-[13px] text-orange-500 font-bold">{selectedDosen.sksBreakdown.kuota50}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-[13px] text-slate-500">Kuota 0% (Tidak Dibayar)</span>
-                    <span className="text-[13px] text-slate-400 font-bold">{selectedDosen.sksBreakdown.kuota0}</span>
-                  </div>
-                </div>
-                
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-[15px] text-slate-600 font-medium">Honor Bruto</span>
-                  <span className="text-[15px] text-black font-bold">Rp {honorBrutoVal.toLocaleString('id-ID')}</span>
-                </div>
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-[15px] text-slate-600 font-medium">Beban Mengajar Wajib</span>
+                <span className="text-[15px] text-slate-400 font-bold">{selectedDosen.targetSks} (Tidak dihitung)</span>
+              </div>
+              
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-[15px] text-slate-600 font-medium">Total Kelebihan SKS Diakui</span>
+                <span className="text-[15px] text-[#1687F5] font-bold">{totalSksLebih} SKS</span>
+              </div>
 
-                <div className="flex justify-between items-center mb-8">
-                  <span className="text-[15px] text-slate-600 font-medium">Potongan PPh 21 ({selectedDosen.golongan === 'Gol IV' ? '15%' : '5%'})</span>
-                  <span className="text-[15px] text-red-500 font-bold">-Rp {pajakPphVal.toLocaleString('id-ID')}</span>
+              <div className="ml-4 mb-6 border-l-2 border-slate-200 pl-3">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-[13px] text-slate-500">Kuota 100%</span>
+                  <span className="text-[13px] text-green-600 font-bold">{sksPerKuota('100%')} SKS</span>
                 </div>
-
-                <div className="border-t-2 border-dashed border-slate-200 my-6"></div>
-                
-                <div className="flex justify-between items-center bg-blue-50 p-4 rounded-xl">
-                  <span className="text-[18px] text-[#1687F5] font-extrabold">Honor Netto</span>
-                  <span className="text-[18px] text-[#1687F5] font-extrabold">Rp {honorNettoVal.toLocaleString('id-ID')}</span>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-[13px] text-slate-500">Kuota 50%</span>
+                  <span className="text-[13px] text-orange-500 font-bold">{sksPerKuota('50%')} SKS</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[13px] text-slate-500">Kuota 0% (Tidak Dibayar)</span>
+                  <span className="text-[13px] text-slate-400 font-bold">{sksPerKuota('0%')} SKS</span>
                 </div>
               </div>
 
-              {/* ACTION BUTTONS (Disesuaikan dengan Desain Gambar) */}
+              <div className="flex justify-between items-center mb-6">
+                <span className="text-[15px] text-slate-600 font-medium">Honor Bruto</span>
+                <span className="text-[15px] text-black font-bold">Rp {honorBrutoVal.toLocaleString('id-ID')}</span>
+              </div>
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-[15px] text-slate-600 font-medium">
+                  Potongan PPh 21 ({selectedDosen.golongan === 'Gol IV' ? '15%' : '5%'})
+                </span>
+                <span className="text-[15px] text-red-500 font-bold">-Rp {pajakPphVal.toLocaleString('id-ID')}</span>
+              </div>
+
+              <div className="border-t-2 border-dashed border-slate-200 my-6"></div>
+              
+              <div className="flex justify-between items-center bg-blue-50 p-4 rounded-xl">
+                <span className="text-[18px] text-[#1687F5] font-extrabold">Honor Netto</span>
+                <span className="text-[18px] text-[#1687F5] font-extrabold">Rp {honorNettoVal.toLocaleString('id-ID')}</span>
+              </div>
+            </div>
+
+            {/* Tombol Aksi Verifikasi */}
+            <div className="w-full md:w-[480px] self-end">
               {selectedDosen.status !== "Terverifikasi" ? (
                 <div className="flex items-center gap-4 w-full">
-                  <button 
-                    onClick={() => handleTolak(selectedDosen.id)}
+                  <button
+                    onClick={handleTolak}
                     className="flex-1 py-4 px-6 rounded-2xl font-bold text-[16px] text-red-600 bg-red-50/70 border border-red-200 hover:bg-red-100/80 transition-all flex items-center justify-center gap-2.5 cursor-pointer shadow-sm active:scale-95"
                   >
                     <i className="fa-solid fa-xmark text-[17px]"></i>
                     <span>Tolak Data</span>
                   </button>
-                  <button 
+                  <button
                     onClick={() => handleVerifikasi(selectedDosen.id)}
                     className="flex-1 py-4 px-6 rounded-2xl font-bold text-[16px] text-emerald-700 bg-emerald-50/80 border border-emerald-300 hover:bg-emerald-100/80 transition-all flex items-center justify-center gap-2.5 cursor-pointer shadow-sm active:scale-95"
                   >
@@ -471,7 +439,6 @@ export default function DataVerifikasi() {
                   <i className="fa-solid fa-lock"></i> Data Telah Diverifikasi Keuangan
                 </div>
               )}
-
             </div>
 
           </div>
@@ -500,16 +467,18 @@ export default function DataVerifikasi() {
               onChange={(e) => setSelectedSemester(e.target.value)}
               className="bg-transparent border-none text-[15px] font-bold text-slate-700 focus:outline-none cursor-pointer"
             >
-              <option value="Ganjil 2026/2027">Ganjil 2026/2027</option>
+              <option value="Ganjil 2025/2026">Ganjil 2025/2026</option>
               <option value="Genap 2025/2026">Genap 2025/2026 (Riwayat)</option>
-              <option value="Ganjil 2025/2026">Ganjil 2025/2026 (Riwayat)</option>
+              <option value="Ganjil 2026/2027">Ganjil 2026/2027</option>
             </select>
           </div>
         </div>
-
-        {/* Action Bar Search Input */}
-        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm mb-6">
-          <div className="p-4 border-b border-slate-100 flex items-center justify-between gap-4">
+        
+        {/* Container Tabel Utama */}
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+          
+          {/* Header Action Bar di Dalam Tabel */}
+          <div className="p-5 border-b border-slate-100 flex items-center justify-between gap-4 bg-white">
             <div className="relative w-full max-w-[320px]">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
                 <i className="fa-solid fa-magnifying-glass text-[14px]"></i>
@@ -524,47 +493,54 @@ export default function DataVerifikasi() {
             </div>
             
             <div className="text-[13px] font-bold text-slate-400">
-              Menampilkan {filteredDosen.length} data antrean
+              Menampilkan {filteredDosen.length} data
             </div>
           </div>
 
-          {/* Tabel Data Antrean */}
+          {/* Tabel Data Honor */}
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-max">
               <thead className="bg-slate-50 border-b border-slate-200">
                 <tr>
                   <th className="px-8 py-5 text-[15px] font-bold text-black w-[80px]">NO</th>
                   <th className="px-8 py-5 text-[15px] font-bold text-black">NAMA DOSEN</th>
+                  <th className="px-8 py-5 text-[15px] font-bold text-black text-center">STATUS DOSEN</th>
                   <th className="px-8 py-5 text-[15px] font-bold text-black">NIP</th>
                   <th className="px-8 py-5 text-[15px] font-bold text-black text-center">KELEBIHAN SKS</th>
                   <th className="px-8 py-5 text-[15px] font-bold text-black text-center">STATUS</th>
                   <th className="px-8 py-5 text-[15px] font-bold text-black text-center">AKSI</th>
                 </tr>
               </thead>
-              <tbody className="text-[15px] text-slate-700 font-medium divide-y divide-slate-100">
+              <tbody className="text-[16px] text-slate-700 font-medium divide-y divide-slate-100">
+                
                 {filteredDosen.length === 0 ? (
                   <tr>
-                    <td colSpan="6" className="px-8 py-10 text-center text-slate-400 font-bold">
-                      Tidak ada data dosen yang sesuai.
+                    <td colSpan="7" className="px-8 py-10 text-center text-slate-400 font-bold">
+                      Tidak ada data dosen yang sesuai dengan pencarian.
                     </td>
                   </tr>
                 ) : (
                   filteredDosen.map((item, index) => (
                     <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
-                      <td className="px-8 py-5 font-bold text-slate-400">{index + 1}</td>
+                      <td className="px-8 py-5">{index + 1}</td>
                       <td className="px-8 py-5">
                         <div className="text-black font-bold">{item.nama}</div>
-                        <div className="text-[13px] text-slate-500 font-medium">{item.jabatan}</div>
+                        <div className="text-[13px] text-slate-500 font-medium mt-0.5">{item.jabatan}</div>
+                      </td>
+                      <td className="px-8 py-5 text-center">
+                        <span className="bg-[#1687F5] text-white text-[12px] px-3 py-1 rounded-md font-bold tracking-wider">
+                          {item.statusDosen}
+                        </span>
                       </td>
                       <td className="px-8 py-5 text-slate-600">{item.nip}</td>
-                      <td className="px-8 py-5 text-center font-bold text-[#1687F5]">{item.kelebihanSks}</td>
+                      <td className="px-8 py-5 text-center font-bold">{item.kelebihanSks}</td>
                       <td className="px-8 py-5 text-center">
                         {item.status === "Terverifikasi" ? (
-                          <span className="inline-flex px-4 py-1.5 rounded-full border border-green-300 bg-green-50 text-green-700 text-[13px] font-bold">
+                          <span className="inline-flex px-4 py-1.5 rounded-full border border-green-300 bg-green-50 text-green-700 text-[14px] font-bold">
                             Terverifikasi
                           </span>
                         ) : (
-                          <span className="inline-flex px-4 py-1.5 rounded-full border border-orange-300 bg-orange-50 text-orange-600 text-[13px] font-bold">
+                          <span className="inline-flex px-4 py-1.5 rounded-full border border-orange-300 bg-orange-50 text-orange-600 text-[14px] font-bold">
                             Menunggu Verifikasi
                           </span>
                         )}
@@ -575,7 +551,7 @@ export default function DataVerifikasi() {
                             setSelectedDosen(item);
                             setViewDetail(true);
                           }}
-                          className="flex items-center gap-2 px-5 py-2.5 bg-[#1687F5] hover:bg-blue-600 text-white rounded-lg transition-all text-[13px] font-bold shadow-sm active:scale-95 cursor-pointer"
+                          className="flex items-center gap-2 px-5 py-2.5 border border-slate-300 rounded-lg hover:border-[#1687F5] hover:text-[#1687F5] hover:bg-blue-50 transition-all text-[15px] font-bold shadow-sm active:scale-95 cursor-pointer"
                         >
                           <i className="fa-regular fa-eye"></i> Lihat Detail
                         </button>
@@ -583,6 +559,7 @@ export default function DataVerifikasi() {
                     </tr>
                   ))
                 )}
+
               </tbody>
             </table>
           </div>

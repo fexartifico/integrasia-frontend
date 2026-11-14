@@ -292,12 +292,12 @@ export default function DataHonorPendidikanKeuangan() {
       setSelectedDosen({ ...selectedDosen, status: "Terverifikasi Keuangan" });
     }
     
-    alert("Data honor berhasil diverifikasi!");
+    alert("Data honor berhasil disetujui & diverifikasi!");
   };
 
-  const handleRevisi = (dosenId) => {
-    alert("Data dikembalikan untuk direvisi.");
-    // Bisa tambahkan logika ubah status ke "Direvisi" jika ada di sistem backend
+  const handleTolak = (dosenId) => {
+    alert("Data ditolak dan dikembalikan untuk direvisi.");
+    // Bisa tambahkan logika ubah status ke "Ditolak/Direvisi" jika ada di sistem backend
   };
 
   // Logika Filter Data
@@ -353,7 +353,7 @@ export default function DataHonorPendidikanKeuangan() {
             
             {/* Status Badge di Kanan Atas */}
             {selectedDosen.status === "Terverifikasi Keuangan" ? (
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-green-200 bg-green-50 text-green-700 font-bold">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 font-bold">
                 <i className="fa-solid fa-circle-check"></i> Terverifikasi Keuangan
               </div>
             ) : (
@@ -430,21 +430,21 @@ export default function DataHonorPendidikanKeuangan() {
               </div>
             </div>
 
-            {/* ACTION BAR VERIFIKASI KEUANGAN */}
+            {/* ACTION BAR VERIFIKASI KEUANGAN - WARNA DIPERBARUI SESUAI GAMBAR 2 */}
             <div className="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row justify-end items-center gap-4">
               {selectedDosen.status === "Menunggu Verifikasi Keuangan" ? (
                 <>
                   <button 
-                    onClick={() => handleRevisi(selectedDosen.id)}
-                    className="w-full sm:w-auto px-6 py-2.5 rounded-lg font-bold text-red-600 bg-red-50 border border-red-200 hover:bg-red-100 transition-all"
+                    onClick={() => handleTolak(selectedDosen.id)}
+                    className="w-full sm:w-auto px-6 py-2.5 rounded-xl font-bold text-red-600 bg-red-50/50 border border-red-200 hover:bg-red-100 transition-all"
                   >
-                    <i className="fa-solid fa-rotate-left mr-2"></i> Kembalikan / Revisi
+                    <i className="fa-solid fa-xmark mr-2"></i> Tolak Data
                   </button>
                   <button 
                     onClick={() => handleVerifikasi(selectedDosen.id)}
-                    className="w-full sm:w-auto px-8 py-2.5 rounded-lg font-bold text-white bg-green-600 hover:bg-green-700 shadow-md shadow-green-500/20 transition-all"
+                    className="w-full sm:w-auto px-8 py-2.5 rounded-xl font-bold text-emerald-700 bg-emerald-50/50 border border-emerald-400 hover:bg-emerald-100 transition-all"
                   >
-                    <i className="fa-solid fa-check mr-2"></i> Verifikasi Data
+                    <i className="fa-solid fa-check mr-2"></i> Setujui & Verifikasi
                   </button>
                 </>
               ) : (
@@ -633,7 +633,7 @@ export default function DataHonorPendidikanKeuangan() {
 
                         <td className="px-6 py-5 text-center">
                           {item.status === "Terverifikasi Keuangan" ? (
-                            <span className="inline-flex px-3 py-1.5 rounded-full border border-green-200 bg-green-50 text-green-600 text-[12px] font-bold">
+                            <span className="inline-flex px-3 py-1.5 rounded-full border border-emerald-200 bg-emerald-50 text-emerald-600 text-[12px] font-bold">
                               <i className="fa-solid fa-circle-check mr-1.5 self-center"></i> Terverifikasi
                             </span>
                           ) : (

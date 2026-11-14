@@ -29,6 +29,7 @@ import MasterData from './pages/admin_input/MasterData';
 import DashboardDosen from './pages/dosen/DashboardDosen';
 import HonorariumDosen from './pages/dosen/HonorariumDosen';
 import DistribusiSks from './pages/dosen/DistribusiSks';
+import HonorNonPengajaran from './pages/dosen/HonorNonPengajaran';
 // import honorPendidikan from './pages/dosen/HonorPendidikan';
 
 
@@ -77,6 +78,7 @@ function App() {
           <Route path="dosen/distribusi-sks" element={<DistribusiSks />} />
           <Route path="dosen/honorarium" element={<HonorariumDosen />} />
           <Route path="dosen/honor-pendidikan" element={<honorPendidikan />} />
+          <Route path="dosen/honor-non-pengajaran" element={<HonorNonPengajaran />} />
          
           
         </Route>

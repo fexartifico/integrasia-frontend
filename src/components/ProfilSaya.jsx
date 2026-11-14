@@ -9,6 +9,7 @@ export default function ProfilSaya() {
     nidn: "0016118101",
     prodi: "Teknik Informatika",
     jafung: "Lektor Kepala/IVa",
+    tugasTambahan: "Kepala Unit Kerja",
     foto: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=300&auto=format&fit=crop"
   });
 
@@ -90,6 +91,11 @@ export default function ProfilSaya() {
             <div className="py-4.5 flex items-center">
               <span className="w-1/4 text-[15px] font-bold text-slate-500">Jafung/Pangkat</span>
               <span className="w-3/4 text-[15px] font-bold text-slate-900">{profil.jafung}</span>
+            </div>
+
+            <div className="py-4.5 flex items-center">
+              <span className="w-1/4 text-[15px] font-bold text-slate-500">Tugas Tambahan</span>
+              <span className="w-3/4 text-[15px] font-bold text-slate-900">{profil.tugasTambahan}</span>
             </div>
           </div>
 

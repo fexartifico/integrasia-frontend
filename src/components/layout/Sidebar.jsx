@@ -225,9 +225,9 @@ export default function Sidebar() {
             </li>
             <li>
           {/* Menu Baru: Honor Pendidikan (Non-Pengajaran) */}
-          <NavLink to="/dosen/honor-pendidikan" className={getNavLinkClass}>
+          <NavLink to="/dosen/honor-non-pengajaran" className={getNavLinkClass}>
             <i className="fa-solid fa-chalkboard-user text-[20px] mr-4 w-8 text-center transition-transform duration-300 group-hover:scale-110"></i>
-            Honor Pendidikan
+            Honor Non-Pengajaran
           </NavLink>
         </li>
           </>
