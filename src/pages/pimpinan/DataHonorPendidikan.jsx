@@ -47,7 +47,6 @@ export default function DataHonorPendidikanPimpinan() {
       jabatan: "Kaprodi",
       golongan: "Gol IV/a",
       bkdTerpenuhi: true,
-      // Dosen 1: Mengikuti ke-7 Kegiatan
       kegiatan: [
         "Pembimbing Utama Tesis", 
         "Pembimbing Pendamping Tesis", 
@@ -58,7 +57,7 @@ export default function DataHonorPendidikanPimpinan() {
         "Pembimbing Akademik"
       ],
       honorBruto: 2006000,
-      pajakPph: 300900, // 15% (Gol IV)
+      pajakPph: 300900,
       honorNetto: 1705100,
       status: "Terverifikasi Keuangan",
       rincianGroups: [
@@ -67,10 +66,10 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing Utama Tesis",
           judul: "Implementasi AI pada Medis",
           mahasiswaList: [
-            { mhs: "Husen Alaydrus", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
-            { mhs: "Faris Alwan", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
-            { mhs: "Darwin Alesandro", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
-            { mhs: "Raditya Meyka", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 }
+            { mhs: "Husen Alaydrus", status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
+            { mhs: "Faris Alwan", status: "Berlanjut", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
+            { mhs: "Darwin Alesandro", status: "Selesai", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
+            { mhs: "Raditya Meyka", status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 }
           ],
           totalMahasiswa: 4,
           totalSubtotal: 446400
@@ -80,10 +79,10 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing Pendamping Tesis",
           judul: "Analisis Big Data",
           mahasiswaList: [
-            { mhs: "Edhis Supriyadi", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Raihan Putra", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Ahmad Rizki", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Budi Doremi", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Edhis Supriyadi", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Raihan Putra", status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Ahmad Rizki", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Budi Doremi", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 4,
           totalSubtotal: 297600
@@ -93,10 +92,10 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing Skripsi/TA",
           judul: "Aplikasi E-Commerce V2",
           mahasiswaList: [
-            { mhs: "Siti Rahma", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "M. Rizky", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Dewi Kirana", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Arya Bima", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Siti Rahma", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "M. Rizky", status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Dewi Kirana", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Arya Bima", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 4,
           totalSubtotal: 297600
@@ -106,10 +105,10 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing PKL/Magang",
           judul: "Sistem Presensi RFID PT Astra",
           mahasiswaList: [
-            { mhs: "Sinta Nuriyah", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Kevin Sanjaya", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Rina Nose", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Doni Salmanan", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Sinta Nuriyah", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Kevin Sanjaya", status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Rina Nose", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Doni Salmanan", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 4,
           totalSubtotal: 297600
@@ -119,10 +118,10 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Penguji Tesis",
           judul: "Pengembangan IoT Smart City",
           mahasiswaList: [
-            { mhs: "Citra Kirana", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Indra Kenz", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Tukul Arwana", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Andre Taulany", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Citra Kirana", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Indra Kenz", status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Tukul Arwana", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Andre Taulany", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 4,
           totalSubtotal: 297600
@@ -132,10 +131,10 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Penguji Skripsi/TA",
           judul: "Sistem Pakar Diagnosa Penyakit",
           mahasiswaList: [
-            { mhs: "Sule", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Nunung", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Azis Gagap", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Parto", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Sule", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Nunung", status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Azis Gagap", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Parto", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 4,
           totalSubtotal: 297600
@@ -145,10 +144,10 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing Akademik",
           judul: "Bimbingan Kelas TI-6A",
           mahasiswaList: [
-            { mhs: "Ahmad Dani", sks: 2, status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
-            { mhs: "Ari Lasso", sks: 2, status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
-            { mhs: "Once Mekel", sks: 2, status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
-            { mhs: "Yuke", sks: 2, status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 }
+            { mhs: "Ahmad Dani", status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
+            { mhs: "Ari Lasso", status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
+            { mhs: "Once Mekel", status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
+            { mhs: "Yuke", status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 }
           ],
           totalMahasiswa: 4,
           totalSubtotal: 71600
@@ -162,14 +161,13 @@ export default function DataHonorPendidikanPimpinan() {
       jabatan: "Lektor",
       golongan: "Gol III/c",
       bkdTerpenuhi: true,
-      // Dosen 2: 3 Kegiatan
       kegiatan: [
         "Pembimbing Utama Tesis",
         "Pembimbing Pendamping Tesis",
         "Penguji Seminar Proposal Mhs Skripsi/TA/Tesis"
       ],
       honorBruto: 781200,
-      pajakPph: 39060, // 5% (Gol III)
+      pajakPph: 39060,
       honorNetto: 742140,
       status: "Terverifikasi Keuangan",
       rincianGroups: [
@@ -178,9 +176,9 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing Utama Tesis",
           judul: "Audit Sistem Informasi Bank",
           mahasiswaList: [
-            { mhs: "Junaedi", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
-            { mhs: "Rahmat", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
-            { mhs: "Gilang", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 }
+            { mhs: "Junaedi", status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
+            { mhs: "Rahmat", status: "Berlanjut", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
+            { mhs: "Gilang", status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 }
           ],
           totalMahasiswa: 3,
           totalSubtotal: 334800
@@ -190,9 +188,9 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing Pendamping Tesis",
           judul: "Valuasi Startup Digital",
           mahasiswaList: [
-            { mhs: "Syifa", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Mila", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Tasya", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Syifa", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Mila", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Tasya", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 3,
           totalSubtotal: 223200
@@ -202,9 +200,9 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Penguji Seminar Proposal",
           judul: "Efektivitas Pajak Daerah",
           mahasiswaList: [
-            { mhs: "Dinda", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Tiara", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Lyodra", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Dinda", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Tiara", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Lyodra", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 3,
           totalSubtotal: 223200
@@ -218,7 +216,6 @@ export default function DataHonorPendidikanPimpinan() {
       jabatan: "Lektor Kepala",
       golongan: "Gol IV/c",
       bkdTerpenuhi: true,
-      // Dosen 3: 4 Kegiatan
       kegiatan: [
         "Pembimbing Skripsi/TA", 
         "Pembimbing PKL/Magang",
@@ -226,7 +223,7 @@ export default function DataHonorPendidikanPimpinan() {
         "Pembimbing Akademik"
       ],
       honorBruto: 723300,
-      pajakPph: 108495, // 15% (Gol IV)
+      pajakPph: 108495,
       honorNetto: 614805,
       status: "Menunggu Verifikasi Keuangan",
       rincianGroups: [
@@ -235,9 +232,9 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing Skripsi/TA",
           judul: "Robotika Pertanian Terpadu",
           mahasiswaList: [
-            { mhs: "Galih", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Ratna", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Dilan", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Galih", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Ratna", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Dilan", status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 3,
           totalSubtotal: 223200
@@ -247,9 +244,9 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing PKL/Magang",
           judul: "Magang PLTU Suralaya",
           mahasiswaList: [
-            { mhs: "Milea", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Iqbal", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Vanesha", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Milea", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Iqbal", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Vanesha", status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 3,
           totalSubtotal: 223200
@@ -259,9 +256,9 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Penguji Skripsi/TA",
           judul: "Desain Turbin Angin Vertikal",
           mahasiswaList: [
-            { mhs: "Fauzi", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Ihsan", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-            { mhs: "Putra", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+            { mhs: "Fauzi", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Ihsan", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+            { mhs: "Putra", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
           ],
           totalMahasiswa: 3,
           totalSubtotal: 223200
@@ -271,9 +268,9 @@ export default function DataHonorPendidikanPimpinan() {
           kegiatan: "Pembimbing Akademik",
           judul: "Bimbingan Kelas EL-4B",
           mahasiswaList: [
-            { mhs: "Andi", sks: 2, status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
-            { mhs: "Bagus", sks: 2, status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
-            { mhs: "Cahyo", sks: 2, status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 }
+            { mhs: "Andi", status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
+            { mhs: "Bagus", status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 },
+            { mhs: "Cahyo", status: "Beban lebih", tarif: "Rp 17.900", subtotal: 17900 }
           ],
           totalMahasiswa: 3,
           totalSubtotal: 53700
@@ -298,13 +295,11 @@ export default function DataHonorPendidikanPimpinan() {
 
   // ================= TAMPILAN HALAMAN DETAIL (Page Baru) =================
   if (viewDetail && selectedDosen) {
-    // Saring grup rincian berdasarkan Tab yang sedang aktif
     const filteredGroups = selectedDosen.rincianGroups.filter(g => validCategoriesToMatch.includes(g.jenis));
     const tabBruto = filteredGroups.reduce((acc, curr) => acc + curr.totalSubtotal, 0);
     const tabPph = Math.round(tabBruto * (selectedDosen.golongan.includes('IV') ? 0.15 : 0.05));
     const tabNetto = tabBruto - tabPph;
 
-    // Kalkulasi String Rincian Penjumlahan (Contoh: Rp 446.400 + Rp 297.600 = Rp 744.000)
     const stringPenjumlahan = filteredGroups.map(g => `Rp ${g.totalSubtotal.toLocaleString('id-ID')}`).join(' + ');
 
     return (
@@ -344,7 +339,6 @@ export default function DataHonorPendidikanPimpinan() {
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px]">NAMA KEGIATAN</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px]">JUDUL</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px]">NAMA MAHASISWA</th>
-                        <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px] text-center">SKS</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px]">STATUS</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px] text-right">TARIF SBM</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px] text-right">SUBTOTAL</th>
@@ -353,7 +347,6 @@ export default function DataHonorPendidikanPimpinan() {
                     <tbody className="divide-y divide-slate-100 font-medium text-slate-600 bg-white">
                       {group.mahasiswaList.map((row, rIdx) => (
                         <tr key={rIdx} className="hover:bg-slate-50/50">
-                          {/* Nama Kegiatan & Judul diisi ke setiap baris (Tidak di-Merge/rowspan) */}
                           <td className="px-5 py-3 font-bold text-slate-800 w-[20%]">
                             {group.kegiatan}
                           </td>
@@ -361,7 +354,6 @@ export default function DataHonorPendidikanPimpinan() {
                             {group.judul}
                           </td>
                           <td className="px-5 py-3">{row.mhs}</td>
-                          <td className="px-5 py-3 text-center">{row.sks}</td>
                           <td className="px-5 py-3">{row.status}</td>
                           <td className="px-5 py-3 text-right">{row.tarif}</td>
                           <td className="px-5 py-3 text-right font-bold text-slate-900">Rp {row.subtotal.toLocaleString('id-ID')}</td>
@@ -370,10 +362,9 @@ export default function DataHonorPendidikanPimpinan() {
                     </tbody>
                     <tfoot className="bg-[#f8fafc] border-t border-slate-200 text-slate-800 font-bold">
                       <tr>
-                        {/* Total di bawah Kegiatan & Judul (colSpan 2), Angka di bawah Nama Mahasiswa */}
                         <td colSpan="2" className="px-5 py-4 text-[14px]">Total</td>
                         <td className="px-5 py-4 text-left">{group.totalMahasiswa}</td>
-                        <td colSpan="3"></td>
+                        <td colSpan="2"></td>
                         <td className="px-5 py-4 text-right text-[14px]">Rp {group.totalSubtotal.toLocaleString('id-ID')}</td>
                       </tr>
                     </tfoot>
@@ -382,7 +373,7 @@ export default function DataHonorPendidikanPimpinan() {
               </div>
             ))}
 
-            {/* Kotak Summary (Ringkasan Honor Bruto & Netto Paling Bawah) Sesuai Gambar */}
+            {/* Kotak Summary (Ringkasan Honor Bruto & Netto Paling Bawah) */}
             <div className="bg-slate-200 border border-slate-300 rounded-xl p-6 flex flex-col md:flex-row justify-between items-center mt-10">
               <div className="w-full md:w-auto">
                 <div className="text-[14px] text-slate-600 font-bold mb-3">Ringkasan Honor Bruto</div>
@@ -456,7 +447,7 @@ export default function DataHonorPendidikanPimpinan() {
           </div>
         </div>
 
-        {/* Tab Navigasi (Dipisah Dari Container Tabel) */}
+        {/* Tab Navigasi */}
         <div className="flex items-center gap-6 border-b border-slate-300 mb-6">
           <button 
             onClick={() => handleTabChange('Pendidikan')}
@@ -539,7 +530,6 @@ export default function DataHonorPendidikanPimpinan() {
                   </tr>
                 ) : (
                   filteredData.map((item, index) => {
-                    // Hitung honor bruto spesifik tab yang sedang dilihat di row ini
                     const filteredGroupsRow = item.rincianGroups.filter(g => validCategoriesToMatch.includes(g.jenis));
                     const displayBruto = filteredGroupsRow.reduce((acc, curr) => acc + curr.totalSubtotal, 0);
 

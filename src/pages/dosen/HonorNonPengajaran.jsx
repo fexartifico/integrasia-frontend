@@ -36,10 +36,10 @@ export default function HonorNonPengajaranDosen() {
         kegiatan: "Pembimbing Utama Tesis",
         judul: "Implementasi AI pada Medis",
         mahasiswaList: [
-          { mhs: "Husen Alaydrus", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
-          { mhs: "Faris Alwan", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
-          { mhs: "Darwin Alesandro", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
-          { mhs: "Raditya Meyka", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 }
+          { mhs: "Husen Alaydrus", status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
+          { mhs: "Faris Alwan", status: "Berlanjut", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
+          { mhs: "Darwin Alesandro", status: "Selesai", tarif: "Rp 186.000 x 60%", subtotal: 111600 },
+          { mhs: "Raditya Meyka", status: "Beban lebih", tarif: "Rp 186.000 x 60%", subtotal: 111600 }
         ],
         totalMahasiswa: 4,
         totalSubtotal: 446400
@@ -49,10 +49,10 @@ export default function HonorNonPengajaranDosen() {
         kegiatan: "Pembimbing Pendamping Tesis",
         judul: "Analisis Big Data",
         mahasiswaList: [
-          { mhs: "Edhis Supriyadi", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-          { mhs: "Raihan Putra", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-          { mhs: "Ahmad Rizki", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-          { mhs: "Budi Doremi", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+          { mhs: "Edhis Supriyadi", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+          { mhs: "Raihan Putra", status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+          { mhs: "Ahmad Rizki", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+          { mhs: "Budi Doremi", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
         ],
         totalMahasiswa: 4,
         totalSubtotal: 297600
@@ -62,10 +62,10 @@ export default function HonorNonPengajaranDosen() {
         kegiatan: "Pembimbing Skripsi/TA",
         judul: "Aplikasi E-Commerce V2",
         mahasiswaList: [
-          { mhs: "Siti Rahma", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-          { mhs: "M. Rizky", sks: 2, status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-          { mhs: "Dewi Kirana", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-          { mhs: "Arya Bima", sks: 2, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+          { mhs: "Siti Rahma", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+          { mhs: "M. Rizky", status: "Berlanjut", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+          { mhs: "Dewi Kirana", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+          { mhs: "Arya Bima", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
         ],
         totalMahasiswa: 4,
         totalSubtotal: 297600
@@ -76,8 +76,8 @@ export default function HonorNonPengajaranDosen() {
         kegiatan: "Penguji Seminar Proposal",
         judul: "Sistem Pakar Diagnosa Penyakit",
         mahasiswaList: [
-          { mhs: "Ahmad Dani", sks: 0.5, status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
-          { mhs: "Ari Lasso", sks: 2, status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
+          { mhs: "Ahmad Dani", status: "Beban lebih", tarif: "Rp 186.000 x 40%", subtotal: 74400 },
+          { mhs: "Ari Lasso", status: "Selesai", tarif: "Rp 186.000 x 40%", subtotal: 74400 }
         ],
         totalMahasiswa: 2,
         totalSubtotal: 148800
@@ -170,7 +170,7 @@ export default function HonorNonPengajaranDosen() {
           </button>
         </div>
 
-        {/* Detail Tabel Data (Sesuai Referensi Gambar) */}
+        {/* Detail Tabel Data */}
         <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
           
           {filteredGroups.length === 0 ? (
@@ -187,7 +187,6 @@ export default function HonorNonPengajaranDosen() {
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px]">NAMA KEGIATAN</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px]">JUDUL</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px]">NAMA MAHASISWA</th>
-                        <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px] text-center">SKS</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px]">STATUS</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px] text-right">TARIF SBM</th>
                         <th className="px-5 py-4 font-extrabold uppercase tracking-wider text-[12px] text-right">SUBTOTAL</th>
@@ -199,7 +198,6 @@ export default function HonorNonPengajaranDosen() {
                           <td className="px-5 py-3 font-bold text-slate-800 w-[20%]">{group.kegiatan}</td>
                           <td className="px-5 py-3 w-[25%]">{group.judul}</td>
                           <td className="px-5 py-3">{row.mhs}</td>
-                          <td className="px-5 py-3 text-center">{row.sks}</td>
                           <td className="px-5 py-3">{row.status}</td>
                           <td className="px-5 py-3 text-right">{row.tarif}</td>
                           <td className="px-5 py-3 text-right font-bold text-slate-900">Rp {row.subtotal.toLocaleString('id-ID')}</td>
@@ -210,7 +208,7 @@ export default function HonorNonPengajaranDosen() {
                       <tr>
                         <td colSpan="2" className="px-5 py-4 text-[14px]">Total</td>
                         <td className="px-5 py-4 text-left">{group.totalMahasiswa}</td>
-                        <td colSpan="3"></td>
+                        <td colSpan="2"></td>
                         <td className="px-5 py-4 text-right text-[14px]">Rp {group.totalSubtotal.toLocaleString('id-ID')}</td>
                       </tr>
                     </tfoot>
