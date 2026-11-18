@@ -1,5 +1,38 @@
 import React, { useState } from 'react';
 
+// Jenis kegiatan honor non-pengajaran (sama dengan halaman Honor Pendidikan & Penunjang)
+// Tarif: SK Direktur PNJ No. 23 Tahun 2026, Lampiran I poin 3
+const JENIS_KEGIATAN = [
+  { nama: 'Pembimbing Utama Tesis', kategori: 'Pendidikan', dasar: 'Jumlah mahasiswa × tarif', catatan: 'Pembimbing min. S3. Cair maks. 15 hari kerja setelah sidang tesis selesai' },
+  { nama: 'Pembimbing Pendamping Tesis', kategori: 'Pendidikan', dasar: 'Jumlah mahasiswa × tarif', catatan: 'Pembimbing min. S3. Cair maks. 15 hari kerja setelah sidang tesis selesai' },
+  { nama: 'Pembimbing Skripsi/TA', kategori: 'Pendidikan', dasar: 'Per mahasiswa', catatan: 'Jika 2 pembimbing: 60% (pembimbing 1) & 40% (pembimbing 2) dari tarif. Cair maks. 15 hari kerja setelah sidang selesai' },
+  { nama: 'Pembimbing PKL/Magang', kategori: 'Pendidikan', dasar: 'Jumlah mahasiswa × tarif', catatan: 'Monitoring maks. 2× per semester, area Jabodetabek' },
+  { nama: 'Penguji Tesis', kategori: 'Pendidikan', dasar: 'Jumlah mahasiswa × tarif', catatan: 'Mengacu ke penguji seminar hasil penelitian tesis' },
+  { nama: 'Penguji Skripsi/TA', kategori: 'Pendidikan', dasar: 'Jumlah mahasiswa × tarif', catatan: '' },
+  { nama: 'Pembimbing Akademik', kategori: 'Pendidikan', dasar: 'Jumlah mahasiswa × tarif × semester', catatan: 'Diajukan maks. 5 hari kerja setelah semester berakhir' },
+  { nama: 'Penguji Seminar Proposal Mhs Skripsi/TA/Tesis', kategori: 'Penunjang', dasar: 'Jumlah mahasiswa × tarif', catatan: 'Tarif sama untuk seminar proposal skripsi/TA dan tesis' },
+];
+
+const KATEGORI_NON_PENGAJARAN = ['Pendidikan', 'Penunjang'];
+
+const infoJenis = (nama) => JENIS_KEGIATAN.find((j) => j.nama === nama);
+
+const rupiah = (n) => Number(n).toLocaleString('id-ID');
+
+const BADGE_KATEGORI = {
+  'Pendidikan': 'border-blue-200 text-blue-700 bg-blue-50',
+  'Penunjang': 'border-amber-200 text-amber-700 bg-amber-50',
+};
+
+const FORM_NON_KOSONG = {
+  jenisKegiatan: JENIS_KEGIATAN[0].nama,
+  dasar: JENIS_KEGIATAN[0].dasar,
+  tarifGol4: '',
+  tarifGol3: '',
+  catatan: JENIS_KEGIATAN[0].catatan,
+  expired: '',
+};
+
 export default function MasterData() {
   const [activeTab, setActiveTab] = useState('tarif');
   
@@ -44,6 +77,83 @@ export default function MasterData() {
       expired: '2030-12-31'
     }
   ]);
+
+  // ===== Tarif Honor Non-Pengajaran (SK Direktur No. 23 Tahun 2026, Lampiran I) =====
+  // Kategori, dasar perhitungan & catatan diambil dari JENIS_KEGIATAN; yang disimpan hanya tarif.
+  const [dataNonPeng, setDataNonPeng] = useState([
+    { id: 101, jenisKegiatan: 'Pembimbing Utama Tesis', tarifGol4: 750000, tarifGol3: 671100, expired: '' },
+    { id: 102, jenisKegiatan: 'Pembimbing Pendamping Tesis', tarifGol4: 500000, tarifGol3: 447300, expired: '' },
+    { id: 103, jenisKegiatan: 'Pembimbing Skripsi/TA', tarifGol4: 350000, tarifGol3: 310000, expired: '' },
+    { id: 104, jenisKegiatan: 'Pembimbing PKL/Magang', tarifGol4: 200000, tarifGol3: 178900, expired: '' },
+    { id: 105, jenisKegiatan: 'Penguji Tesis', tarifGol4: 200000, tarifGol3: 178950, expired: '' },
+    { id: 106, jenisKegiatan: 'Penguji Skripsi/TA', tarifGol4: 75000, tarifGol3: 67100, expired: '' },
+    { id: 107, jenisKegiatan: 'Pembimbing Akademik', tarifGol4: 20000, tarifGol3: 17900, expired: '' },
+    { id: 108, jenisKegiatan: 'Penguji Seminar Proposal Mhs Skripsi/TA/Tesis', tarifGol4: 50000, tarifGol3: 44750, expired: '' },
+  ].map((row) => {
+    const info = JENIS_KEGIATAN.find((j) => j.nama === row.jenisKegiatan);
+    return { ...row, kategori: info.kategori, dasar: info.dasar, catatan: info.catatan };
+  }));
+  const [filterKategori, setFilterKategori] = useState('Semua');
+  const [isModalNonOpen, setIsModalNonOpen] = useState(false);
+  const [editNonId, setEditNonId] = useState(null);
+  const [formNon, setFormNon] = useState(FORM_NON_KOSONG);
+
+  const handleOpenAddNon = () => {
+    setEditNonId(null);
+    setFormNon(FORM_NON_KOSONG);
+    setIsModalNonOpen(true);
+  };
+
+  const handleOpenEditNon = (item) => {
+    setEditNonId(item.id);
+    setFormNon({
+      jenisKegiatan: item.jenisKegiatan,
+      dasar: item.dasar,
+      tarifGol4: String(item.tarifGol4),
+      tarifGol3: String(item.tarifGol3),
+      catatan: item.catatan,
+      expired: item.expired,
+    });
+    setIsModalNonOpen(true);
+  };
+
+  // Saat jenis kegiatan diganti, dasar perhitungan & catatan ikut default jenis tsb
+  const handleChangeJenis = (nama) => {
+    const info = infoJenis(nama);
+    setFormNon((prev) => ({ ...prev, jenisKegiatan: nama, dasar: info.dasar, catatan: info.catatan }));
+  };
+
+  const handleSaveNon = (e) => {
+    e.preventDefault();
+    const entry = {
+      jenisKegiatan: formNon.jenisKegiatan,
+      kategori: infoJenis(formNon.jenisKegiatan).kategori,
+      dasar: formNon.dasar.trim(),
+      tarifGol4: Number(formNon.tarifGol4),
+      tarifGol3: Number(formNon.tarifGol3),
+      catatan: formNon.catatan.trim(),
+      expired: formNon.expired,
+    };
+
+    if (editNonId) {
+      setDataNonPeng((prev) => prev.map((item) => (item.id === editNonId ? { ...item, ...entry } : item)));
+      alert("Tarif non-pengajaran berhasil diperbarui!");
+    } else {
+      setDataNonPeng((prev) => [{ id: Date.now(), ...entry }, ...prev]);
+      alert("Tarif non-pengajaran baru berhasil ditambahkan!");
+    }
+    setIsModalNonOpen(false);
+  };
+
+  const handleDeleteNon = (id) => {
+    if (window.confirm("Apakah Anda yakin ingin menghapus tarif ini?")) {
+      setDataNonPeng((prev) => prev.filter((item) => item.id !== id));
+    }
+  };
+
+  const filteredNonPeng = dataNonPeng.filter(
+    (item) => filterKategori === 'Semua' || item.kategori === filterKategori
+  );
 
   // State Form Tambah Tarif (Jenis Kelas sudah dihapus)
   const [formTarif, setFormTarif] = useState({
@@ -112,7 +222,19 @@ export default function MasterData() {
             }`}
           >
             <i className="fa-solid fa-money-check-dollar mr-2"></i>
-            Master Tarif SKS
+            Tarif Pengajaran (SKS)
+          </button>
+
+          <button
+            onClick={() => setActiveTab('nonPengajaran')}
+            className={`pb-4 px-2 text-[15px] font-bold transition-all border-b-[3px] ${
+              activeTab === 'nonPengajaran'
+                ? 'border-[#1687F5] text-[#1687F5]'
+                : 'border-transparent text-slate-500 hover:text-slate-800 hover:border-slate-300'
+            }`}
+          >
+            <i className="fa-solid fa-user-graduate mr-2"></i>
+            Tarif Non-Pengajaran
           </button>
           
           <button
@@ -222,6 +344,116 @@ export default function MasterData() {
                       ))
                     )}
 
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB: TARIF HONOR NON-PENGAJARAN */}
+        {activeTab === 'nonPengajaran' && (
+          <div className="animate-fadeIn">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
+              <div className="flex items-center gap-4">
+                <h2 className="text-[18px] font-bold text-slate-800">Tabel Tarif Honor Non-Pengajaran</h2>
+
+                <div className="flex items-center bg-white border border-slate-300 rounded-xl px-3.5 py-2 shadow-sm">
+                  <i className="fa-solid fa-filter text-slate-400 mr-2.5 text-[13px]"></i>
+                  <select
+                    value={filterKategori}
+                    onChange={(e) => setFilterKategori(e.target.value)}
+                    className="bg-transparent text-[13.5px] font-bold text-slate-700 focus:outline-none cursor-pointer"
+                  >
+                    <option value="Semua">Semua Kategori</option>
+                    {KATEGORI_NON_PENGAJARAN.map((k) => (
+                      <option key={k} value={k}>{k}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <button
+                onClick={handleOpenAddNon}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-[14px] bg-[#1687F5] hover:bg-blue-600 text-white transition-all shadow-sm active:scale-95"
+              >
+                <i className="fa-solid fa-plus"></i>
+                Tambah Tarif Non-Pengajaran
+              </button>
+            </div>
+
+            {/* Info dasar aturan */}
+            <div className="flex items-start gap-3 bg-blue-50 border border-blue-100 text-blue-800 rounded-xl px-4 py-3 mb-6 text-[13px] font-medium">
+              <i className="fa-solid fa-circle-info mt-0.5"></i>
+              <p>
+                Jenis kegiatan mengikuti halaman Honor Pendidikan &amp; Penunjang. Tarif bruto sebelum pajak sesuai
+                SK Direktur PNJ No. 23 Tahun 2026 (Lampiran I poin 3), dan hanya dibayarkan jika penugasan
+                sudah melampaui BKD.
+              </p>
+            </div>
+
+            <div className="w-full bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse min-w-max">
+                  <thead className="bg-slate-50 border-b border-slate-200">
+                    <tr>
+                      <th className="px-6 py-4 text-[13px] font-bold text-slate-700">KATEGORI</th>
+                      <th className="px-6 py-4 text-[13px] font-bold text-slate-700">JENIS KEGIATAN</th>
+                      <th className="px-6 py-4 text-[13px] font-bold text-slate-700">DASAR PERHITUNGAN</th>
+                      <th className="px-6 py-4 text-[13px] font-bold text-slate-700 text-right">TARIF GOL IV (Rp)</th>
+                      <th className="px-6 py-4 text-[13px] font-bold text-slate-700 text-right">TARIF GOL III (Rp)</th>
+                      <th className="px-6 py-4 text-[13px] font-bold text-slate-700">CATATAN</th>
+                      <th className="px-6 py-4 text-[13px] font-bold text-slate-700 text-center">TANGGAL EXPIRED</th>
+                      <th className="px-6 py-4 text-[13px] font-bold text-slate-700 text-center">AKSI</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-[14px] text-slate-700 font-medium divide-y divide-slate-100">
+                    {filteredNonPeng.length === 0 ? (
+                      <tr>
+                        <td colSpan="8" className="px-6 py-10 text-center text-slate-400">
+                          <i className="fa-regular fa-folder-open text-3xl mb-2"></i>
+                          <p className="font-bold">Tidak ada data tarif untuk filter ini.</p>
+                        </td>
+                      </tr>
+                    ) : (
+                      filteredNonPeng.map((item) => (
+                        <tr key={item.id} className="hover:bg-slate-50 transition-colors">
+                          <td className="px-6 py-4">
+                            <span className={`inline-flex px-3 py-1 rounded border text-[11px] font-bold tracking-wide whitespace-nowrap ${BADGE_KATEGORI[item.kategori] || 'border-slate-300 text-slate-600 bg-white'}`}>
+                              {item.kategori}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 font-bold text-slate-900">{item.jenisKegiatan}</td>
+                          <td className="px-6 py-4 text-slate-600">{item.dasar}</td>
+                          <td className="px-6 py-4 text-right font-extrabold text-[#1687F5]">{rupiah(item.tarifGol4)}</td>
+                          <td className="px-6 py-4 text-right font-extrabold text-[#1687F5]">{rupiah(item.tarifGol3)}</td>
+                          <td className="px-6 py-4 text-[13px] text-slate-500 max-w-[320px]">{item.catatan || '-'}</td>
+                          <td className="px-6 py-4 text-center text-slate-500 whitespace-nowrap">
+                            {item.expired ? (
+                              <><i className="fa-regular fa-calendar mr-2"></i>{item.expired}</>
+                            ) : (
+                              <span className="text-[12px] text-slate-400">Sampai ada SK baru</span>
+                            )}
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <div className="flex items-center justify-center gap-1">
+                              <button
+                                onClick={() => handleOpenEditNon(item)}
+                                className="w-8 h-8 rounded-lg text-[#1687F5] hover:bg-blue-50 hover:text-blue-700 transition-all active:scale-95"
+                              >
+                                <i className="fa-solid fa-pen"></i>
+                              </button>
+                              <button
+                                onClick={() => handleDeleteNon(item.id)}
+                                className="w-8 h-8 rounded-lg text-red-500 hover:bg-red-50 hover:text-red-700 transition-all active:scale-95"
+                              >
+                                <i className="fa-solid fa-trash-can"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -435,6 +667,127 @@ export default function MasterData() {
 
             </form>
 
+          </div>
+        </div>
+      )}
+
+
+      {/* MODAL TAMBAH / EDIT TARIF NON-PENGAJARAN */}
+      {isModalNonOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity"
+            onClick={() => setIsModalNonOpen(false)}
+          ></div>
+
+          <div className="bg-white rounded-[24px] shadow-2xl w-full max-w-[600px] max-h-[90vh] relative z-10 overflow-hidden flex flex-col animate-fadeIn">
+            <div className="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-white shrink-0">
+              <div>
+                <h2 className="text-[20px] font-extrabold text-slate-800">
+                  {editNonId ? 'Edit Tarif Non-Pengajaran' : 'Tambah Tarif Non-Pengajaran'}
+                </h2>
+                <p className="text-[14px] text-slate-500 font-medium mt-0.5">Pilih jenis kegiatan dan isi besaran tarif bruto.</p>
+              </div>
+              <button
+                onClick={() => setIsModalNonOpen(false)}
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition-colors"
+              >
+                <i className="fa-solid fa-xmark text-lg"></i>
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveNon} className="p-8 space-y-5 overflow-y-auto">
+              <div>
+                <label className="block text-[13px] font-bold text-slate-700 uppercase tracking-wider mb-2">Jenis Kegiatan</label>
+                <select
+                  value={formNon.jenisKegiatan}
+                  onChange={(e) => handleChangeJenis(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 font-semibold text-slate-800 focus:outline-none focus:border-[#1687F5] focus:bg-white transition-colors text-[14px] cursor-pointer"
+                >
+                  {KATEGORI_NON_PENGAJARAN.map((kat) => (
+                    <optgroup key={kat} label={kat}>
+                      {JENIS_KEGIATAN.filter((j) => j.kategori === kat).map((j) => (
+                        <option key={j.nama} value={j.nama}>{j.nama}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-[13px] font-bold text-slate-700 uppercase tracking-wider mb-2">Dasar Perhitungan</label>
+                <input
+                  type="text"
+                  value={formNon.dasar}
+                  onChange={(e) => setFormNon({...formNon, dasar: e.target.value})}
+                  required
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 font-semibold text-slate-800 focus:outline-none focus:border-[#1687F5] focus:bg-white transition-colors text-[14px]"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[13px] font-bold text-slate-700 uppercase tracking-wider mb-2">Tarif Gol IV (Rp)</label>
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="Contoh: 75000"
+                    value={formNon.tarifGol4}
+                    onChange={(e) => setFormNon({...formNon, tarifGol4: e.target.value})}
+                    required
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 font-semibold text-slate-800 focus:outline-none focus:border-[#1687F5] focus:bg-white transition-colors text-[14px]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[13px] font-bold text-slate-700 uppercase tracking-wider mb-2">Tarif Gol III (Rp)</label>
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="Contoh: 67100"
+                    value={formNon.tarifGol3}
+                    onChange={(e) => setFormNon({...formNon, tarifGol3: e.target.value})}
+                    required
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 font-semibold text-slate-800 focus:outline-none focus:border-[#1687F5] focus:bg-white transition-colors text-[14px]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[13px] font-bold text-slate-700 uppercase tracking-wider mb-2">Catatan <span className="normal-case text-slate-400 font-semibold">(opsional)</span></label>
+                <input
+                  type="text"
+                  value={formNon.catatan}
+                  onChange={(e) => setFormNon({...formNon, catatan: e.target.value})}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 font-semibold text-slate-800 focus:outline-none focus:border-[#1687F5] focus:bg-white transition-colors text-[14px]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[13px] font-bold text-slate-700 uppercase tracking-wider mb-2">Tanggal Expired <span className="normal-case text-slate-400 font-semibold">(kosongkan jika berlaku sampai ada SK baru)</span></label>
+                <input
+                  type="date"
+                  value={formNon.expired}
+                  onChange={(e) => setFormNon({...formNon, expired: e.target.value})}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 font-semibold text-slate-800 focus:outline-none focus:border-[#1687F5] focus:bg-white transition-colors text-[14px] cursor-pointer"
+                />
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={() => setIsModalNonOpen(false)}
+                  className="px-6 py-3 rounded-xl font-bold text-[14px] text-slate-600 hover:bg-slate-100 transition-colors"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-3 rounded-xl font-bold text-[14px] bg-[#1687F5] hover:bg-blue-600 text-white transition-all shadow-md active:scale-95"
+                >
+                  Simpan Tarif
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
